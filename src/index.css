@@ -7,13 +7,18 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   --primary: #ffcb74;
-  --off-white: #f0f0f0;
+  --off-white: #dfdede;
   --milk: #fefefe;
   --near-dark: #2f2f2f;
   --dark-green: #113e21;
   --purple: #646cff;
-  --violet: #535bf2;
+  --violet: #7b81fa;
   --bad-signal: #f72727;
+
+  --tea: #A6E22E;
+  --dark-grey: #303030;
+  --white: #eee;
+  --sky: #66d9ef;
 }
 
 
@@ -22,9 +27,11 @@ body {
   flex-direction: column;
   min-width: 320px;
   min-height: 100vh;
-  background-color: var(--milk);
+  background-color: var(--dark-grey);
+  color: var(--white);
 }
 
-h1 {
-  color: var(--near-dark)
+a {
+  text-decoration: none;
+  color: var(--sky);
 }
