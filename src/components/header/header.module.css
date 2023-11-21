@@ -1,5 +1,6 @@
 header {
   width: 100%;
   padding: 1em;
-  color: var(--dark-green);
+  color: var(--dark-grey);
+  background-color: var(--purple);
 }

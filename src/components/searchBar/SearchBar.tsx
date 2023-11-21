@@ -1,19 +1,31 @@
-import { useRef, useEffect, FormEvent, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import searchBarStyle from './searchBar.module.css';
+import { IProps } from '../../interfaces/IProps';
+import { FaSearch } from 'react-icons/fa';
 
 function SearchBar(
-  { setErrorMessage }: { setErrorMessage: React.Dispatch<React.SetStateAction<string>> }
+  {
+    requestApi, setErrorMessage
+  }: IProps
 ) {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [word, setWord] = useState('');
 
+  function wordIsvalid() {
+    if (validateWord().validWord) {
+      setErrorMessage('');
+      requestApi(word);
+    } else {
+      setErrorMessage(validateWord().message);
+    }
+  }
 
   function searchWord(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
 
-    validateWord();
+    wordIsvalid();
   }
 
   function validateWord() {
@@ -22,30 +34,31 @@ function SearchBar(
       message: ''
     }
 
-    if (word === '') {
+    const wordWithoutSpace = word.trim();
+
+    if (wordWithoutSpace === '') {
       response.message = 'Type something!'
       response.validWord = false
 
       return response;
     }
 
-    word.trim()
 
-    const wordList = word.split(' ');
-
-    if (wordList.length > 1) {
+    if (/\s/g.test(wordWithoutSpace)) {
       response.message = 'Type one word only!'
       response.validWord = false
 
       return response;
     }
 
+    console.log(response);
+
     return response;
   }
 
   function handleKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === 'Enter') {
-      validateWord();
+      wordIsvalid();
     }
   }
 
@@ -72,7 +85,7 @@ function SearchBar(
         <button
           type="submit"
           onClick={(e) => searchWord(e)}
-        >search</button>
+        ><FaSearch /></button>
       </div>
     </section>
   )
