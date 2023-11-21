@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 import searchBarStyle from './searchBar.module.css';
 import { IProps } from '../../interfaces/IProps';
+import { FaSearch } from 'react-icons/fa';
 
 function SearchBar(
   {
@@ -84,7 +85,7 @@ function SearchBar(
         <button
           type="submit"
           onClick={(e) => searchWord(e)}
-        >search</button>
+        ><FaSearch /></button>
       </div>
     </section>
   )
