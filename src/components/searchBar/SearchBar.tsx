@@ -51,8 +51,6 @@ function SearchBar(
       return response;
     }
 
-    console.log(response);
-
     return response;
   }
 
