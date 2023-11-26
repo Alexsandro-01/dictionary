@@ -1,27 +1,11 @@
-# React + TypeScript + Vite
+# Dictionary repo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## What's up!
 
-Currently, two official plugins are available:
+Eu criei este repositório para desenvolver uma aplicação simples de dicionário em inglês. Eu ando aprendendo inglês e de vez em sempre encontro algumas palavras que nã sei o significado, ao invés de recorrer ao tradutor, resolvi usar um dicionário em inglês para me ajudar a praticar ainda mais.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A inspiração para criar a aplicação veio desse desafio do [frontendMentor](https://www.frontendmentor.io/challenges/dictionary-web-app-h5wwnyuKFL). Eu gostei muito da ideia e resolvi criar a minha versão.
 
-## Expanding the ESLint configuration
+Se você, por algum motivo quiser visitar a aplicação funcionando você pode encontar nesse [link](https://dictionary-plum-seven.vercel.app/). Como ainda está em desenvolvimento, ainda não ajustei o layout para desktop, no momento estou focando no mobile.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Estou desenvolvendo usando `React`.
