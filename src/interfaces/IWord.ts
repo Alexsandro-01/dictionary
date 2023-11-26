@@ -1,15 +1,7 @@
 export interface IWord {
   word: string;
   phonetic: string;
-  phonetics: {
-    text: string;
-    audio: string;
-    sourceUrl?: string;
-    license?: {
-      name: string
-      url: string;
-    };
-  }[];
+  phonetics: IPhonetics[];
   origin?: string;
   meanings: {
     partOfSpeech: string;
@@ -28,3 +20,13 @@ export interface IWord {
   };
   sourceUrls: string[]
 }
+
+export interface IPhonetics {
+  text: string;
+  audio: string;
+  sourceUrl?: string;
+  license?: {
+    name: string
+    url: string;
+  };
+};
