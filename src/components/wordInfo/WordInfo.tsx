@@ -1,24 +1,33 @@
-import { useEffect, useRef } from "react";
-import { IWord } from "../../interfaces/IWord";
 import wordInfoStyle from './wordInfo.module.css';
-import { GiSpeaker } from "react-icons/gi";
 import { VscDebugBreakpointLog } from "react-icons/vsc";
+import Speak from "../Speak";
+import { IPhonetics, IWord } from '../../interfaces/IWord';
+import { useEffect } from 'react';
 
 function Wordinfo({ wordData }: { wordData: IWord }) {
 
-  const audioRef = useRef<HTMLAudioElement>(null);
-
-  const handlePlayClick = () => {
-    if (audioRef.current) {
-      audioRef.current.play();
-    }
-  }
-
   const uniqueKey = (indx: number): number => indx + Math.random();
+
+  function filterAudio(phonetics: IPhonetics[]) {
+    const audios = phonetics.filter((audio) => audio)
+    let usAudio: IPhonetics[];
+
+    if (audios.length > 0) {
+      usAudio = audios.filter((elem) => {
+        const rgx = /us\.mp3$/;
+
+        return rgx.test(elem.audio)
+      })
+
+      return usAudio[0].audio
+    }
+
+    return '';
+  }
 
   useEffect(() => {
 
-  })
+  }, [wordData])
 
   return (
     <section className={wordInfoStyle.container}>
@@ -38,23 +47,9 @@ function Wordinfo({ wordData }: { wordData: IWord }) {
           </p>
         </div>
         {
-          wordData.phonetics.map((elem, index) => {
-            if (elem.license?.name === "BY 3.0 US") {
-              return (
-                <div key={uniqueKey(index)} className={wordInfoStyle['audio-btn']}>
-                  <audio ref={audioRef}>
-                    <source src={elem.audio} type="audio/mpeg" />
-                  </audio>
-                  <button
-                    onClick={handlePlayClick}
-                    type="button"
-                  >
-                    <GiSpeaker />
-                  </button>
-                </div>
-              )
-            }
-          })
+          wordData.phonetics.length > 0 && (
+            <Speak audioSrc={filterAudio(wordData.phonetics)} />
+          )
         }
       </div>
       {
