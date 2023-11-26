@@ -39,7 +39,7 @@ function Wordinfo({ wordData }: { wordData: IWord }) {
         </div>
         {
           wordData.phonetics.map((elem, index) => {
-            if (elem.audio) {
+            if (elem.license?.name === "BY 3.0 US") {
               return (
                 <div key={uniqueKey(index)} className={wordInfoStyle['audio-btn']}>
                   <audio ref={audioRef}>
