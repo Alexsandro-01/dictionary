@@ -4,7 +4,6 @@ import Header from './components/header/Header'
 import SearchBar from './components/searchBar/SearchBar'
 import requestWordFromApi from './services/requests';
 import { IWord } from './interfaces/IWord';
-// import { response } from './mocks/responseApi';
 import Wordinfo from './components/wordInfo/WordInfo';
 
 function App() {
@@ -23,7 +22,10 @@ function App() {
       <Header />
       <main>
         <section>
-          <SearchBar requestApi={requestApi} setErrorMessage={setErrorMessage} />
+          <SearchBar
+            requestApi={requestApi}
+            setErrorMessage={setErrorMessage}
+          />
           {
             errorMessage !== '' && (
               <p className={appStyle['error-message']}>{errorMessage}</p>
