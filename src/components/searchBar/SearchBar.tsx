@@ -67,7 +67,7 @@ function SearchBar(
   }, [])
 
   return (
-    <section className={searchBarStyle.container}>
+    <section>
       <div className={searchBarStyle.form}>
 
         <input
