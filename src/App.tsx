@@ -21,7 +21,7 @@ function App() {
     <>
       <Header />
       <main>
-        <section>
+        <section className={appStyle["input-container"]}>
           <SearchBar
             requestApi={requestApi}
             setErrorMessage={setErrorMessage}

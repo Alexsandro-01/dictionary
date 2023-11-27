@@ -1,5 +1,8 @@
 .error-message {
   color: var(--bad-signal);
-  margin: 0 1em;
+  padding: 0.5em 0;
+}
 
+.input-container {
+  padding: 2em 1em;
 }
