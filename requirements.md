@@ -2,7 +2,7 @@
 
 - [x] corrigir espaçamento entre os elementos. O App está com alguns espaçamentos desproporcionais.
 
-- [ ] corrigir exibição de aviso ao cometer erros de input. As mensagens estão muito distantes do input.
+- [x] corrigir exibição de aviso ao cometer erros de input. As mensagens estão muito distantes do input.
 
 - [x] Dar um espaço maior ao fim da página. EM algumas palavras o último texto da página fica colado ao fundo da tela.
 
