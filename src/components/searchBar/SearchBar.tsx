@@ -33,21 +33,21 @@ function SearchBar(
     const response = {
       validWord: true,
       message: ''
-    }
+    };
 
     const wordWithoutSpace = word.trim();
 
     if (wordWithoutSpace === '') {
-      response.message = Errors.noTyped
-      response.validWord = false
+      response.message = Errors.noTyped;
+      response.validWord = false;
 
       return response;
     }
 
 
     if (/\s/g.test(wordWithoutSpace)) {
-      response.message = Errors.oneWordonly
-      response.validWord = false
+      response.message = Errors.oneWordonly;
+      response.validWord = false;
 
       return response;
     }
@@ -65,7 +65,7 @@ function SearchBar(
     if (inputRef.current != null) {
       inputRef.current.focus();
     }
-  }, [])
+  }, []);
 
   return (
     <section>
@@ -87,7 +87,7 @@ function SearchBar(
         ><FaSearch /></button>
       </div>
     </section>
-  )
+  );
 }
 
 export default SearchBar;

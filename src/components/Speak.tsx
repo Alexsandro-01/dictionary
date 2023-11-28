@@ -1,13 +1,13 @@
-import { GiSpeaker } from "react-icons/gi";
+import { GiSpeaker } from 'react-icons/gi';
 import wordInfoStyle from './wordInfo/wordInfo.module.css';
 
 function Speak({ audioSrc }: { audioSrc: string }) {
 
   const play = (src: string) => {
-    const audio = new Audio(src)
+    const audio = new Audio(src);
 
     audio.play();
-  }
+  };
 
   return (
     <div className={wordInfoStyle['audio-btn']}>
@@ -18,7 +18,7 @@ function Speak({ audioSrc }: { audioSrc: string }) {
         <GiSpeaker />
       </button>
     </div>
-  )
+  );
 }
 
 export default Speak;

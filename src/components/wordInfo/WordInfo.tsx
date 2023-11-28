@@ -1,6 +1,6 @@
 import wordInfoStyle from './wordInfo.module.css';
-import { VscDebugBreakpointLog } from "react-icons/vsc";
-import Speak from "../Speak";
+import { VscDebugBreakpointLog } from 'react-icons/vsc';
+import Speak from '../Speak';
 import { IPhonetics, IWord } from '../../interfaces/IWord';
 import { useEffect } from 'react';
 
@@ -9,15 +9,15 @@ function Wordinfo({ wordData }: { wordData: IWord }) {
   const uniqueKey = (indx: number): number => (indx + 1) * Math.random();
 
   function filterAudio(phonetics: IPhonetics[]) {
-    const audios = phonetics.filter((audio) => audio)
+    const audios = phonetics.filter((audio) => audio);
     let usAudio: IPhonetics[];
 
     if (audios.length > 0) {
       usAudio = audios.filter((elem) => {
         const rgx = /us\.mp3$/;
 
-        return rgx.test(elem.audio)
-      })
+        return rgx.test(elem.audio);
+      });
 
       return usAudio.length > 0 ? usAudio[0].audio : '';
     }
@@ -27,7 +27,7 @@ function Wordinfo({ wordData }: { wordData: IWord }) {
 
   useEffect(() => {
 
-  }, [wordData])
+  }, [wordData]);
 
   return (
     <section className={wordInfoStyle.container}>
@@ -121,7 +121,7 @@ function Wordinfo({ wordData }: { wordData: IWord }) {
         </p>
       </div>
     </section>
-  )
+  );
 }
 
 export default Wordinfo;

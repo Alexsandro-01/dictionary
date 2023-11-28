@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import appStyle from './App.module.css';
-import Header from './components/header/Header'
-import SearchBar from './components/searchBar/SearchBar'
+import Header from './components/header/Header';
+import SearchBar from './components/searchBar/SearchBar';
 import requestWordFromApi from './services/requests';
 import { IWord } from './interfaces/IWord';
 import Wordinfo from './components/wordInfo/WordInfo';
@@ -21,24 +21,22 @@ function App() {
     if (response.status === 404) {
       setNotFoundWord({
         message: Errors.notFound,
-      })
+      });
 
-      setApiResponse(undefined)
+      setApiResponse(undefined);
     }
 
     if (response.status === 200) {
-      setApiResponse(await response.json())
-      setNotFoundWord(undefined)
+      setApiResponse(await response.json());
+      setNotFoundWord(undefined);
     }
-
-    console.log(response.status);
   }
 
   return (
     <>
       <Header />
       <main>
-        <section className={appStyle["input-container"]}>
+        <section className={appStyle['input-container']}>
           <SearchBar
             requestApi={requestApi}
             setErrorMessage={setErrorMessage}
@@ -65,7 +63,7 @@ function App() {
         }
       </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

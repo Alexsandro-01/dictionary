@@ -1,5 +1,5 @@
 import headerStyle from './header.module.css';
-import { FaBook } from "react-icons/fa";
+import { FaBook } from 'react-icons/fa';
 
 function Header() {
   return (
@@ -8,7 +8,7 @@ function Header() {
         <FaBook />
       </h1>
     </header>
-  )
+  );
 }
 
 export default Header;

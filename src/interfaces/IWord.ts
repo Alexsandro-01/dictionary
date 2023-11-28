@@ -29,4 +29,4 @@ export interface IPhonetics {
     name: string
     url: string;
   };
-};
+}
