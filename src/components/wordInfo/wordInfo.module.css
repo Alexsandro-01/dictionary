@@ -4,7 +4,7 @@
 
 .container h2 {
   color: var(--off-white);
-  font-size: 2em;
+  font-size: 3em;
   padding-bottom: 0.215em;
 }
 
@@ -16,7 +16,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5em 0;
+  padding: 1em 0;
 }
 
 .audio-btn button {
@@ -83,7 +83,7 @@
 }
 
 .source {
-  margin-top: 2em;
+  padding: 2em 0;
 }
 
 .source p:first-child {

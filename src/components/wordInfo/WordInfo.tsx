@@ -1,24 +1,33 @@
-import { useEffect, useRef } from "react";
-import { IWord } from "../../interfaces/IWord";
 import wordInfoStyle from './wordInfo.module.css';
-import { GiSpeaker } from "react-icons/gi";
-import { VscDebugBreakpointLog } from "react-icons/vsc";
+import { VscDebugBreakpointLog } from 'react-icons/vsc';
+import Speak from '../Speak';
+import { IPhonetics, IWord } from '../../interfaces/IWord';
+import { useEffect } from 'react';
 
 function Wordinfo({ wordData }: { wordData: IWord }) {
 
-  const audioRef = useRef<HTMLAudioElement>(null);
+  const uniqueKey = (indx: number): number => (indx + 1) * Math.random();
 
-  const handlePlayClick = () => {
-    if (audioRef.current) {
-      audioRef.current.play();
+  function filterAudio(phonetics: IPhonetics[]) {
+    const audios = phonetics.filter((audio) => audio);
+    let usAudio: IPhonetics[];
+
+    if (audios.length > 0) {
+      usAudio = audios.filter((elem) => {
+        const rgx = /us\.mp3$/;
+
+        return rgx.test(elem.audio);
+      });
+
+      return usAudio.length > 0 ? usAudio[0].audio : '';
     }
-  }
 
-  const uniqueKey = (indx: number): number => indx + Math.random();
+    return '';
+  }
 
   useEffect(() => {
 
-  })
+  }, [wordData]);
 
   return (
     <section className={wordInfoStyle.container}>
@@ -38,28 +47,14 @@ function Wordinfo({ wordData }: { wordData: IWord }) {
           </p>
         </div>
         {
-          wordData.phonetics.map((elem, index) => {
-            if (elem.audio) {
-              return (
-                <div key={uniqueKey(index)} className={wordInfoStyle['audio-btn']}>
-                  <audio ref={audioRef}>
-                    <source src={elem.audio} type="audio/mpeg" />
-                  </audio>
-                  <button
-                    onClick={handlePlayClick}
-                    type="button"
-                  >
-                    <GiSpeaker />
-                  </button>
-                </div>
-              )
-            }
-          })
+          filterAudio(wordData.phonetics) && (
+            <Speak audioSrc={filterAudio(wordData.phonetics)} />
+          )
         }
       </div>
       {
-        wordData.meanings.map((content) => (
-          <article key={content.partOfSpeech}>
+        wordData.meanings.map((content, index) => (
+          <article key={uniqueKey(index)}>
             <div>
               <h3>
                 {
@@ -86,7 +81,7 @@ function Wordinfo({ wordData }: { wordData: IWord }) {
                     </div>
                     {
                       definition.example && (
-                        <p className={wordInfoStyle.example} key={uniqueKey(indx)}>
+                        <p className={wordInfoStyle.example}>
                           {
                             `"${definition.example}"`
                           }
@@ -105,7 +100,7 @@ function Wordinfo({ wordData }: { wordData: IWord }) {
                   {' '}
                   {
                     content.synonyms.map((synonym, index) => (
-                      <strong key={synonym}>
+                      <strong key={uniqueKey(index)}>
                         {
                           index - 1 !== content.synonyms.length ? `${synonym}, ` : synonym
                         }
@@ -126,7 +121,7 @@ function Wordinfo({ wordData }: { wordData: IWord }) {
         </p>
       </div>
     </section>
-  )
+  );
 }
 
 export default Wordinfo;
