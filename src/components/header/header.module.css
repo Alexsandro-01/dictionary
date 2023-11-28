@@ -4,3 +4,16 @@ header {
   color: var(--dark-grey);
   background-color: var(--purple);
 }
+
+@media (min-width: 720px) {
+  header {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  header div {
+    max-width: 720px;
+    min-width: 720px;
+    width: auto;
+  }
+}

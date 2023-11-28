@@ -79,6 +79,7 @@ function SearchBar(
           onKeyDown={(e) => handleKeyPress(e)}
           onChange={(e) => setWord(e.target.value)}
           ref={inputRef}
+          placeholder='Search a english word'
         />
 
         <button

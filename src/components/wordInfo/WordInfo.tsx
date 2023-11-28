@@ -58,7 +58,7 @@ function Wordinfo({ wordData }: { wordData: IWord }) {
             <div>
               <h3>
                 {
-                  content.partOfSpeech
+                  content.partOfSpeech[0].toUpperCase() + content.partOfSpeech.substring(1)
                 }
               </h3>
             </div>
@@ -102,7 +102,7 @@ function Wordinfo({ wordData }: { wordData: IWord }) {
                     content.synonyms.map((synonym, index) => (
                       <strong key={uniqueKey(index)}>
                         {
-                          index - 1 !== content.synonyms.length ? `${synonym}, ` : synonym
+                          index + 1 !== content.synonyms.length ? `${synonym}, ` : `${synonym}.`
                         }
                       </strong>
                     ))
