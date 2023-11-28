@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 
 function Wordinfo({ wordData }: { wordData: IWord }) {
 
-  const uniqueKey = (indx: number): number => indx + Math.random();
+  const uniqueKey = (indx: number): number => (indx + 1) * Math.random();
 
   function filterAudio(phonetics: IPhonetics[]) {
     const audios = phonetics.filter((audio) => audio)
@@ -19,7 +19,7 @@ function Wordinfo({ wordData }: { wordData: IWord }) {
         return rgx.test(elem.audio)
       })
 
-      return usAudio[0].audio
+      return usAudio.length > 0 ? usAudio[0].audio : '';
     }
 
     return '';
@@ -47,14 +47,14 @@ function Wordinfo({ wordData }: { wordData: IWord }) {
           </p>
         </div>
         {
-          wordData.phonetics.length > 0 && (
+          filterAudio(wordData.phonetics) && (
             <Speak audioSrc={filterAudio(wordData.phonetics)} />
           )
         }
       </div>
       {
-        wordData.meanings.map((content) => (
-          <article key={content.partOfSpeech}>
+        wordData.meanings.map((content, index) => (
+          <article key={uniqueKey(index)}>
             <div>
               <h3>
                 {
@@ -81,7 +81,7 @@ function Wordinfo({ wordData }: { wordData: IWord }) {
                     </div>
                     {
                       definition.example && (
-                        <p className={wordInfoStyle.example} key={uniqueKey(indx)}>
+                        <p className={wordInfoStyle.example}>
                           {
                             `"${definition.example}"`
                           }
@@ -100,7 +100,7 @@ function Wordinfo({ wordData }: { wordData: IWord }) {
                   {' '}
                   {
                     content.synonyms.map((synonym, index) => (
-                      <strong key={synonym}>
+                      <strong key={uniqueKey(index)}>
                         {
                           index - 1 !== content.synonyms.length ? `${synonym}, ` : synonym
                         }
