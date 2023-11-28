@@ -6,3 +6,8 @@
 .input-container {
   padding: 2em 1em;
 }
+
+.word-notfound {
+  color: var(--near-dark);
+  text-align: center;
+}
