@@ -10,6 +10,6 @@
 
 - [ ] remover vírgula da ultima palavra exibida na lista de sinônimos.
 
-- [ ] corrigir comportamento da página ao pesquisar uma palavra inválida.
+- [x] corrigir comportamento da página ao pesquisar uma palavra inválida.
 
 - [ ] Adicionar layout para desktop.
