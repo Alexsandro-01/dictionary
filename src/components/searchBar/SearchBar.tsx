@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from 'react';
 import searchBarStyle from './searchBar.module.css';
 import { IProps } from '../../interfaces/IProps';
 import { FaSearch } from 'react-icons/fa';
+import Errors from '../../Errors/Errors';
 
 function SearchBar(
   {
@@ -37,7 +38,7 @@ function SearchBar(
     const wordWithoutSpace = word.trim();
 
     if (wordWithoutSpace === '') {
-      response.message = 'Type something!'
+      response.message = Errors.noTyped
       response.validWord = false
 
       return response;
@@ -45,7 +46,7 @@ function SearchBar(
 
 
     if (/\s/g.test(wordWithoutSpace)) {
-      response.message = 'Type one word only!'
+      response.message = Errors.oneWordonly
       response.validWord = false
 
       return response;
